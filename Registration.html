@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Form validation</title>
+	<style>
+		
+		body
+		{
+			background-color: #3498db;
+			justify-content: center;
+			display: flex;
+			align-items: center;
+			height: 100vh;
+		}
+		.form-container
+		{
+			background-color: white;
+			padding: 50px;
+			text-align: center;
+			width: 100%;
+		}
+		.inp
+		{
+			width: 200px;
+			padding: 10px;
+			margin: 0px;
+			text-align: center;
+			border-color: navajowhite;
+			border-right: none;
+			border-left: none;
+			border-top: none;
+
+		}
+		h1
+		{
+			margin: 10px;
+			padding-bottom: 20px;
+			color: navy;
+		}
+		input[type = "submit"]
+		{
+			color: white;
+			border: none;
+			width: 222px;
+			background-color: #3498db;
+			padding: 10px;
+		}
+		.error
+		{
+			color: red;
+			margin: 0px;
+			text-align: left;
+		}
+		label
+		{
+			font-size: 15px;
+			font-weight: bold;
+			padding-right: 100px;
+			color: black;
+			font-family: sans-serif;
+		}
+
+	</style>
+</head>
+<body>
+
+<form action="" onsubmit="return validateFrom()">
+<div class="form-container">
+	<h1>Registration Form</h1>
+
+	<label>First Name</label>
+	<input type="text" placeholder="" id="first" class="inp">
+	<p id="firstError" class="error"></p>
+	<br>
+
+	<label>Last Name</label>
+	<input type="text" placeholder="" id="last" class="inp">
+	<p id="lastError" class="error"></p>
+	<br>
+	<label>Mobile No</label>
+	<input type="number"  placeholder="" id="mobileno" class="inp">
+	<p id="mobileError" class="error"></p>
+	<br>
+	<label>Email Address</label>
+	<input type="text"  placeholder="" id="username" class="inp">
+	<p id="userError" class="error"></p>
+	<br>
+	<label>Gender</label>
+	<input type="radio"  name="gender" placeholder="Male" id="mgender" class="inp">
+	<input type="radio"  name = "gender" placeholder="Female" id="fgender" class="inp">
+	<p id="genderError" class="error"></p>
+	<br>
+	<label>Nationality</label>
+	<input type="text"  placeholder="" id="username" class="inp">
+	<p id="userError" class="error"></p>
+	<br>	
+	<label>Required documents</label>
+	<input type="text"  placeholder="" id="document" class="inp">
+	<p id="documentError" class="error"></p>
+	<br>
+	<label>Address</label>
+	<input type="textarea" size="50" placeholder="" id="address" class="inp">
+	<p id="addressError" class="error"></p>
+	<br>
+	<label>Password</label>
+	<input type="password"  placeholder="" id="password" class="inp">
+	<p id="passError" class="error"></p>
+	<br>
+	<input type="submit" onclick=" checkButton()">
+</div>
+</form>
+
+<script>
+
+let first = document.getElementById("first");
+let last = document.getElementById("last");
+let mobileno = document.getElementById("mobileno");
+let address = document.getElementById("address");
+let flag = 1;
+
+function validateFrom()
+{
+	if(first.value == 0)
+	{
+		document.getElementById("firstError").innerHTML = "firstname is empty";
+		flag = 0;
+	}
+	else
+	{
+		document.getElementById("firstError").innerHTML = "";
+		flag = 1;
+
+	}
+	if(last.value == 0)
+	{
+		document.getElementById("lastError").innerHTML = "lastname is empty";
+		flag = 0;
+	}
+	else
+	{
+		document.getElementById("lastError").innerHTML = "";
+			flag = 1;
+	}
+	if(mobileno.value == 0)
+	{
+		document.getElementById("mobileError").innerHTML = "mobileno is empty";
+		flag = 0;
+	}
+	else if(mobileno.value.length<10)
+	{
+		document.getElementById("mobileError").innerHTML = "mobileno required minimum 10 numbers";
+		flag = 0;
+	}
+	else
+	{
+		document.getElementById("mobileError").innerHTML = "";
+		flag = 1;
+	}
+	if(address.value == 0)
+	{
+		document.getElementById("addressError").innerHTML = "address is empty";
+		flag = 0;
+	}
+	else
+	{
+		document.getElementById("addressError").innerHTML = "";
+		flag = 1;
+	}
+	 
+
+	if(flag)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+} 
+
+
+</script>
+
+
+</body>
+</html>

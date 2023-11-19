@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Form validation</title>
+	<style>
+		
+		body
+		{
+			background-color: #3498db;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			
+		}
+		.form-container
+		{
+			background-color: white;
+			padding: 50px;
+			text-align: center;
+		}
+		h2
+		{
+			margin: 0px 0px 10px 0px;
+		}
+		.inp
+		{
+			width: 200px;
+			margin: 10px 0px;
+			padding: 10px;
+			text-align: center;
+		}
+		input[type="submit"]
+		{
+			width: 222px;
+			background-color: #3498db;
+			color: white;
+			border: none;
+			padding: 10px;
+		}
+		.error
+		{
+			color: red;
+			margin: 0px;
+			text-align: left;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="form-container">
+		<h1>Login Form</h1>
+		<form action="" onsubmit="return validateFrom()">
+		<p id="userError" class="error"></p>
+		<input type="text" placeholder="username" id="username" class="inp">
+		<br>
+		<p id="passError" class="error"></p>
+		<input type="password" placeholder="password" id="password" class="inp">
+		<br>
+		<input type="submit">
+	</form>
+	</div>	
+
+<script>
+
+	let username = document.getElementById("username");
+	let password = document.getElementById("password");
+	let flag = 1;
+
+	function validateFrom()
+	{
+		if(username.value == "")
+		{
+			document.getElementById("userError").innerHTML = "username is empty";
+			flag = 0;
+		}
+		else if(username.value.length <3)
+		{
+			document.getElementById("userError").innerHTML = "username required minimum 3 characters";
+			flag = 0
+		}
+		else
+		{
+			document.getElementById("userError").innerHTML = "";
+			flag = 1;
+		}
+		if(password.value == "")
+		{
+			document.getElementById("passError").innerHTML = "password is empty";
+			flag = 0;
+		}
+		else
+		{
+			document.getElementById("passError").innerHTML = "";
+			flag = 1;
+		}
+
+		if(flag)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+
+</script>
+</body>
+</html>
